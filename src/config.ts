@@ -12,7 +12,8 @@ export default class Config {
   tokenHeader = 'Authorization';
   tokenType = 'Bearer';
   storageType = 'localStorage';
-  tokenRoot = null;
+  tokenRootSignIn = null;
+  tokenRootSignUp = null;
   withCredentials = false;
   providers = {
     facebook: {

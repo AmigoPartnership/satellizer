@@ -19,8 +19,10 @@ export default class AuthProvider {
   get unlinkUrl(): string { return this.SatellizerConfig.unlinkUrl; }
   set unlinkUrl(value) { this.SatellizerConfig.unlinkUrl = value; }
 
-  get tokenRoot(): string { return this.SatellizerConfig.tokenRoot; }
-  set tokenRoot(value) { this.SatellizerConfig.tokenRoot = value; }
+  get tokenRootSignIn(): string { return this.SatellizerConfig.tokenRootSignIn; }
+  get tokenRootSignUp(): string { return this.SatellizerConfig.tokenRootSignUp; }
+  set tokenRootSignIn(value) { this.SatellizerConfig.tokenRootSignIn = value; }
+  set tokenRootSignUp(value) { this.SatellizerConfig.tokenRootSignUp = value; }
 
   get tokenName(): string { return this.SatellizerConfig.tokenName; }
   set tokenName(value) { this.SatellizerConfig.tokenName = value; }

@@ -4,7 +4,7 @@ import { decodeBase64 } from './utils';
 
 class Shared {
   static $inject = ['$q', '$window', 'SatellizerConfig', 'SatellizerStorage'];
-  
+
   private prefixedTokenName: string;
 
   constructor(private $q: angular.IQService,
@@ -34,7 +34,8 @@ class Shared {
   }
 
   setToken(response): void {
-    const tokenRoot = this.SatellizerConfig.tokenRoot;
+    const tokenRootSignIn = this.SatellizerConfig.tokenRootSignIn;
+    const tokenRootSignUp = this.SatellizerConfig.tokenRootSignUp;
     const tokenName = this.SatellizerConfig.tokenName;
     const accessToken = response && response.access_token;
 
@@ -49,7 +50,12 @@ class Shared {
     }
 
     if (!token && response) {
-      const tokenRootData = tokenRoot && tokenRoot.split('.').reduce((o, x) => o[x], response.data);
+      const tokenRootData = tokenRootSignIn && tokenRootSignIn.split('.').reduce((o, x) => o[x], response.data);
+      token = tokenRootData ? tokenRootData[tokenName] : response.data && response.data[tokenName];
+    }
+
+    if (!token && response) {
+      const tokenRootData = tokenRootSignUp && tokenRootSignUp.split('.').reduce((o, x) => o[x], response.data);
       token = tokenRootData ? tokenRootData[tokenName] : response.data && response.data[tokenName];
     }
 
